@@ -19,7 +19,8 @@ function Html5QrcodeScannerComponent({ onScan }: Props) {
         qrbox: { width: 250, height: 250 },
         aspectRatio: 1.0,
         rememberLastUsedCamera: true,
-        disableFlip: false
+        disableFlip: false,
+        showTorchButtonIfSupported: true
       },
       false
     )
