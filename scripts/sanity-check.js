@@ -32,8 +32,12 @@ if (!existsSync(manifestPath)) {
     // Verify each referenced icon file exists
     for (const icon of manifest.icons || []) {
       const iconSrc = typeof icon.src === 'string' ? icon.src : null;
-      if (iconSrc && !existsSync(join(dist, iconSrc))) {
-        errors.push(`Referenced icon "${iconSrc}" not found in dist/`);
+      if (iconSrc) {
+        // Strip leading slash and base path prefix (e.g., /whiskqr/)
+        const iconFile = iconSrc.replace(/^\//, '').replace(/^whiskqr\//, '');
+        if (!existsSync(join(dist, iconFile))) {
+          errors.push(`Referenced icon "${iconSrc}" not found in dist/`);
+        }
       }
     }
   } catch {
