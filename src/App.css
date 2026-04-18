@@ -64,6 +64,7 @@ body {
   justify-content: center;
   padding: 16px;
   overflow: hidden;
+  position: relative;
 }
 
 #reader {
@@ -121,25 +122,32 @@ body {
   display: none;
 }
 
-#reader__dashboard_section_tsr button {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: white !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 8px !important;
-  padding: 8px 16px !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  margin: 0 !important;
+.flash-button {
+  position: absolute;
+  top: calc(16px + var(--safe-top));
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
-#reader__dashboard_section_tsr button:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
+.flash-button:hover {
+  background: rgba(0, 0, 0, 0.7);
 }
 
-#reader__dashboard_section_tsr button[aria-pressed="true"] {
-  background: var(--accent) !important;
-  border-color: var(--accent) !important;
+.flash-button-on {
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .scanner-loading {
